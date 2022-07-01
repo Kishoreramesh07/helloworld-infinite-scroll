@@ -11,7 +11,7 @@ function App() {
   const [apiLoading, setApiLoading] = useState(() => false);
 
   const apiCall = async () => {
-    if(skip > 100){
+    if (skip > 100) {
       return true;
     }
     setApiLoading(true);
@@ -39,7 +39,7 @@ function App() {
   }
 
   useEffect(() => {
-      apiCall()
+    apiCall()
     window.addEventListener('scroll', handleScroll)
   }, [])
 
@@ -76,7 +76,7 @@ function App() {
             ))}
           </div>
           {apiLoading &&
-            <div className="text-center py-5">
+            <div className="text-center py-4">
               <div className="spinner-border text-primary" role="status">
                 <span className="visually-hidden">Loading...</span>
               </div>
