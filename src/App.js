@@ -25,7 +25,6 @@ function App() {
       setApiLoading(false);
     }
 
-    skip += 5;
   }
 
   const handleScroll = (e) => {
@@ -34,14 +33,17 @@ function App() {
     const totalHeight = e.target.documentElement.scrollHeight;
 
     if (topGap + windowHeight + 1 >= totalHeight) {
+      skip += 5;
       apiCall();
     }
   }
 
   useEffect(() => {
     apiCall()
-    window.addEventListener('scroll', handleScroll)
-  }, [])
+    window.addEventListener('scroll', handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <div className="App">
